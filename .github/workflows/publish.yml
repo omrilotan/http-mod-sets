@@ -1,0 +1,89 @@
+name: Publish to Chrome Web Store
+
+# Version-driven: publishes only when manifest.json's version is newer than the
+# highest version the store has published or has under review.
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - manifest.json
+  workflow_dispatch:
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  API: https://chromewebstore.googleapis.com
+  PUBLISHER_ID: 3efe3886-dfb9-4620-b726-7ed2c6dc6cda
+  EXTENSION_ID: lnndbbenkigkalnhdfbmlmjgifjjbdai
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      # The upload action has no version check, so read the store's version first and skip when there is nothing new.
+      - name: Get access token
+        env:
+          CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
+        run: |
+          token=$(curl -sS --fail-with-body https://oauth2.googleapis.com/token \
+            -d client_id="$CLIENT_ID" \
+            -d client_secret="$CLIENT_SECRET" \
+            -d refresh_token="$REFRESH_TOKEN" \
+            -d grant_type=refresh_token | jq -r .access_token)
+          echo "::add-mask::$token"
+          echo "ACCESS_TOKEN=$token" >> "$GITHUB_ENV"
+
+      - name: Compare versions
+        id: check
+        run: |
+          version=$(jq -r .version manifest.json)
+          status=$(curl -sS --fail-with-body -H "Authorization: Bearer $ACCESS_TOKEN" \
+            "$API/v2/publishers/$PUBLISHER_ID/items/$EXTENSION_ID:fetchStatus")
+          store=$(echo "$status" | jq -r '
+            [.publishedItemRevisionStatus, .submittedItemRevisionStatus]
+            | map(select(.) | .distributionChannels[]?.crxVersion) | .[]' | sort -V | tail -1)
+          echo "Manifest version: $version"
+          echo "Store version (published or in review): ${store:-none}"
+
+          highest=$(printf '%s\n%s\n' "$store" "$version" | sed '/^$/d' | sort -V | tail -1)
+          if [ "$version" = "$store" ] || [ "$highest" != "$version" ]; then
+            echo "::notice::Version $version is not newer than the store's ${store}. Nothing to publish."
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Zip extension
+        if: steps.check.outputs.publish == 'true'
+        run: zip -r extension.zip . -x ".*" "*.md" "store/*" "docs/*"
+
+      - name: Upload build artifact
+        if: steps.check.outputs.publish == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: http-mod-sets-${{ steps.check.outputs.version }}
+          path: extension.zip
+
+      - name: Upload and submit for review
+        if: steps.check.outputs.publish == 'true'
+        uses: mnao305/chrome-extension-upload@v7.0.0
+        with:
+          file-path: extension.zip
+          extension-id: ${{ env.EXTENSION_ID }}
+          publisher-id: ${{ env.PUBLISHER_ID }}
+          client-id: ${{ secrets.CHROME_CLIENT_ID }}
+          client-secret: ${{ secrets.CHROME_CLIENT_SECRET }}
+          refresh-token: ${{ secrets.CHROME_REFRESH_TOKEN }}
+          publish: true
