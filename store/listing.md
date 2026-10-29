@@ -49,8 +49,8 @@ Note: body edits apply to requests made with fetch().
 
 **Data usage:** Collects no user data. Check none of the data types. Certify all three disclosures.
 
-**Terms of service URL:** https://github.com/omrilotan/http-mod-sets/blob/main/TERMS.md
+**Terms of service URL:** https://omrilotan.com/http-mod-sets/terms/
 
-**Privacy policy URL:** https://github.com/omrilotan/http-mod-sets/blob/main/PRIVACY.md
+**Privacy policy URL:** https://omrilotan.com/http-mod-sets/privacy/
 
 **Privacy policy text:** This extension collects no data. Rules are stored locally in your browser and never sent to us or any third party.

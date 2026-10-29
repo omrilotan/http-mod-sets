@@ -3,7 +3,7 @@
   "name": "HTTP Mod Sets",
   "version": "1.0.0",
   "description": "Edit request and response headers, rewrite bodies, block requests. Zero data collection. Open source.",
-  "homepage_url": "https://github.com/omrilotan/http-mod-sets",
+  "homepage_url": "https://omrilotan.com/http-mod-sets/",
   "minimum_chrome_version": "111",
   "icons": {
     "16": "icons/icon-16.png",

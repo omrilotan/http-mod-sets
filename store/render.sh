@@ -21,3 +21,9 @@ for page in src/*.html; do
     --window-size="$size" --screenshot="$PWD/$name.png" "file://$PWD/$page" 2>/dev/null
   echo "$name.png ($size)"
 done
+
+# The website shows the bare popup at 2x.
+"$CHROME" --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=2 \
+  --allow-file-access-from-files --virtual-time-budget=4000 \
+  --window-size=440,620 --screenshot="$PWD/../docs/assets/popup.png" "file://$PWD/build/popup-demo.html?scene=list" 2>/dev/null
+echo "../docs/assets/popup.png (440x620 @2x)"

@@ -27,7 +27,7 @@
 
 We collect nothing. No analytics, no accounts, no third parties, no servers.
 
-Your rules are stored in `chrome.storage.local` and never leave your browser. Requests you edit go only where they were already going. See the [privacy policy](PRIVACY.md).
+Your rules are stored in `chrome.storage.local` and never leave your browser. Requests you edit go only where they were already going. See the [privacy policy](https://omrilotan.com/http-mod-sets/privacy/).
 
 ## Using it
 
@@ -65,4 +65,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-[Unlicense](LICENSE). Public domain. See also the [terms of service](TERMS.md) and [privacy policy](PRIVACY.md).
+[Unlicense](LICENSE). Public domain. See also the [terms of service](https://omrilotan.com/http-mod-sets/terms/) and [privacy policy](https://omrilotan.com/http-mod-sets/privacy/).

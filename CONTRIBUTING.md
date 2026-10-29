@@ -55,4 +55,8 @@ If you change the popup's look, regenerate the store images:
 store/render.sh
 ```
 
-It renders the real popup with stubbed extension APIs into `store/*.png`, using Google Chrome in headless mode. Set `CHROME` to point at another Chrome binary. Demo data is in `store/src/demo-stub.js`.
+It renders the real popup with stubbed extension APIs into `store/*.png`, and a popup screenshot for the website, using Google Chrome in headless mode. Set `CHROME` to point at another Chrome binary. Demo data is in `store/src/demo-stub.js`.
+
+## Website
+
+`docs/` is the site at https://omrilotan.com/http-mod-sets/, published with GitHub Pages. It holds the landing page, the privacy policy and the terms of service as plain HTML. Update the privacy policy whenever the extension's data handling or permissions change.

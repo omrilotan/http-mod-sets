@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HTTP Mod Sets: rewrite HTTP, privately</title>
+    <meta name="description" content="Browser extension to edit request and response headers, rewrite bodies and block requests. Zero data collection. Open source." />
+    <link rel="icon" href="assets/icon.png" />
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap">
+        <a class="brand" href=""><img src="assets/icon.png" alt="" /> HTTP Mod Sets</a>
+        <nav>
+          <a href="privacy/">Privacy</a>
+          <a href="terms/">Terms</a>
+          <a href="https://github.com/omrilotan/http-mod-sets">Source</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="wrap hero">
+        <div>
+          <p class="status">HTTP/1.1 <b>200 OK</b> · x-data-collected: none</p>
+          <h1>Rewrite HTTP.<br /><em>Privately.</em></h1>
+          <p class="sub">Edit request and response headers, rewrite bodies, block requests. Zero data collection. Open source.</p>
+          <div class="actions">
+            <a class="button primary" href="https://chromewebstore.google.com/detail/lnndbbenkigkalnhdfbmlmjgifjjbdai">Add to Chrome</a>
+            <a class="button" href="https://github.com/omrilotan/http-mod-sets">View source</a>
+          </div>
+        </div>
+        <figure class="exchange" aria-label="Example: a request and response rewritten by HTTP Mod Sets">
+          <div class="bar"><span>GET /v2/prices</span><span>api.acme.dev</span></div>
+          <pre><span class="line ctx">Accept: application/json</span><span class="line add">Authorization: Bearer dev-token</span><span class="line del">Cache-Control: max-age=600</span><span class="line add">Cache-Control: no-store</span><span class="line gap"></span><span class="line del">{ "price": 49, "currency": "USD" }</span><span class="line add">{ "price": 0, "currency": "EUR" }</span><span class="line gap"></span><span class="line blk">GET cdn.segment.io/analytics.js</span></pre>
+        </figure>
+      </section>
+
+      <div class="wrap">
+        <div class="section-head">
+          <h2>How it works</h2>
+          <span class="mono">one popup · no setup</span>
+        </div>
+        <div class="tour">
+          <figure class="shot">
+            <img src="assets/popup.png" width="880" height="1240" alt="The HTTP Mod Sets popup with three enabled sets" />
+          </figure>
+          <ol class="steps">
+            <li><div><strong>Make a set</strong><span>Press <kbd>N</kbd>. It starts with the site you're on.</span></div></li>
+            <li><div><strong>Add mods</strong><span>Headers, bodies or blocking. Mods run top to bottom.</span></div></li>
+            <li><div><strong>Edit in place</strong><span>Click a mod to change it. Drag to reorder.</span></div></li>
+            <li><div><strong>Switch it</strong><span>Turn a set or a single mod on and off. A green dot shows what matches the page.</span></div></li>
+          </ol>
+        </div>
+
+        <div class="section-head">
+          <h2>What it does</h2>
+          <span class="mono">6 features · 0 trackers</span>
+        </div>
+        <ul class="features">
+          <li><span class="num">01</span><strong>Headers</strong><span>Add or change request and response headers.</span></li>
+          <li><span class="num">02</span><strong>Bodies</strong><span>Rewrite request and response bodies, with regex and <code>$1</code> captures.</span></li>
+          <li><span class="num">03</span><strong>Blocking</strong><span>Block any matching request.</span></li>
+          <li><span class="num">04</span><strong>Sets</strong><span>Group mods by URL and method. Switch a set or a single mod on and off.</span></li>
+          <li><span class="num">05</span><strong>At a glance</strong><span>See which sets match the page, in the popup and on the toolbar badge.</span></li>
+          <li><span class="num">06</span><strong>Portable</strong><span>Import and export your rules as JSON.</span></li>
+        </ul>
+      </div>
+
+      <section class="private">
+        <div class="wrap">
+          <div>
+            <h2>We collect<br />nothing.</h2>
+            <p>Your rules stay in your browser. Edited requests go only where they were already going. The code is public, so you can check.</p>
+            <p><a href="privacy/">Read the privacy policy →</a></p>
+          </div>
+          <ul class="headers" aria-label="What the extension collects">
+            <li><span>X-Analytics</span><span>none</span></li>
+            <li><span>X-Accounts</span><span>none</span></li>
+            <li><span>X-Third-Parties</span><span>none</span></li>
+            <li><span>X-Servers</span><span>none</span></li>
+            <li><span>X-Your-Rules</span><span>local only</span></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <footer class="site">
+      <div class="wrap">
+        <span>HTTP Mod Sets. Public domain (<a href="https://github.com/omrilotan/http-mod-sets/blob/main/LICENSE">Unlicense</a>).</span>
+        <a href="privacy/">Privacy policy</a>
+        <a href="terms/">Terms of service</a>
+        <a href="https://github.com/omrilotan/http-mod-sets/issues">Contact</a>
+      </div>
+    </footer>
+  </body>
+</html>

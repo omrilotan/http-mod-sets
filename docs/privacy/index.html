@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy · HTTP Mod Sets</title>
+    <meta name="description" content="HTTP Mod Sets collects no data. This policy explains what the extension stores on your device and how it uses its permissions." />
+    <link rel="icon" href="../assets/icon.png" />
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap">
+        <a class="brand" href="../"><img src="../assets/icon.png" alt="" /> HTTP Mod Sets</a>
+        <nav>
+          <a href="../privacy/" aria-current="page">Privacy</a>
+          <a href="../terms/">Terms</a>
+          <a href="https://github.com/omrilotan/http-mod-sets">Source</a>
+        </nav>
+      </div>
+    </header>
+    <main class="wrap doc">
+      <p class="status">GET /privacy</p>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: October 29, 2026</p>
+
+      <p class="lead">HTTP Mod Sets is a browser extension that modifies HTTP requests and responses using rules you create. This policy explains what it does with data. In short: <strong>it collects nothing.</strong></p>
+
+      <h2>Data we collect</h2>
+      <p>None. The extension has no analytics, telemetry, crash reporting, advertising, accounts or sign-in. We run no servers, and the extension's own code makes no network requests.</p>
+
+      <h2>Data stored on your device</h2>
+      <p>The rules you create (sets and mods) are stored in your browser with <code>chrome.storage.local</code>. They stay on your device. They are not synced to your Google account, and they are never sent to us or anyone else. Uninstalling the extension deletes them.</p>
+      <p>The popup also remembers which sets you folded, in the extension's local storage. This never leaves your device either.</p>
+
+      <h2>How the extension uses its permissions</h2>
+      <ul>
+        <li><strong>storage</strong>: saves your rules on your device.</li>
+        <li><strong>tabs</strong>: reads the current tab's address to show which of your rules match it, to count them on the toolbar icon, and to suggest a rule for the current site. The address is not stored or sent anywhere.</li>
+        <li><strong>declarativeNetRequest</strong>: applies your header and blocking rules inside the browser.</li>
+        <li><strong>Access to all sites</strong>: your rules can target any site you choose. A script on each page applies your body-editing rules to that page's <code>fetch()</code> requests. It reads the page's address and the list of resources it loaded only to show you which rules match. Nothing is recorded or transmitted.</li>
+      </ul>
+
+      <h2>Requests you modify</h2>
+      <p>When a rule edits a request, the edited request goes only to the site it was already addressed to, exactly as your browser would send it without the extension. The extension does not copy, log or redirect your traffic.</p>
+
+      <h2>Import and export</h2>
+      <p>Exporting saves your rules to a file on your computer. Importing reads a file you choose. Neither step involves any server.</p>
+
+      <h2>Third parties</h2>
+      <p>None. The extension shares no data with third parties, because it has none to share.</p>
+
+      <h2>Children</h2>
+      <p>The extension collects no personal information from anyone, including children.</p>
+
+      <h2>Changes</h2>
+      <p>If this policy changes, the new version will be published on this page with a new date. The <a href="https://github.com/omrilotan/http-mod-sets">source code</a> is public, so every change to the extension can be reviewed.</p>
+
+      <h2>Contact</h2>
+      <p>Questions: <a href="https://github.com/omrilotan/http-mod-sets/issues">open an issue on GitHub</a>.</p>
+    </main>
+    <footer class="site">
+      <div class="wrap">
+        <span>HTTP Mod Sets. Public domain (<a href="https://github.com/omrilotan/http-mod-sets/blob/main/LICENSE">Unlicense</a>).</span>
+        <a href="../privacy/">Privacy policy</a>
+        <a href="../terms/">Terms of service</a>
+        <a href="https://github.com/omrilotan/http-mod-sets/issues">Contact</a>
+      </div>
+    </footer>
+  </body>
+</html>
