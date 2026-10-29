@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="frame.css" />
+    <style>
+      body { width: 1400px; height: 560px; }
+      .canvas { height: 560px; padding: 0 90px 0 100px; gap: 70px; }
+      .popup { width: calc(440px * 1.05); height: calc(490px * 1.05); }
+      .popup iframe { height: 490px; transform: scale(1.05); }
+    </style>
+  </head>
+  <body>
+    <div class="canvas">
+      <div class="copy">
+        <div class="eyebrow"><img src="../../icons/icon-128.png" alt="" /> HTTP Mod Sets</div>
+        <h1>Rewrite HTTP.<br /><em>Privately.</em></h1>
+        <p class="sub">Edit headers and bodies. Block requests.</p>
+        <div class="private"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Zero data collection · Open source</div>
+      </div>
+      <div class="popup"><iframe src="../build/popup-demo.html?scene=list"></iframe></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+:root {
+  --bg: #0e1824;
+  --ink: #f2f6fa;
+  --muted: #9fb1c3;
+  --accent: #4b9fe0;
+  --ok: #3cc777;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(900px 500px at 85% 20%, rgba(75, 159, 224, 0.28), transparent 60%),
+    radial-gradient(700px 400px at 0% 100%, rgba(60, 199, 119, 0.12), transparent 60%),
+    var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+.canvas {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.eyebrow img {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: #fff;
+}
+
+h1 {
+  margin: 18px 0 16px;
+  font-size: 64px;
+  line-height: 1.02;
+  font-weight: 760;
+  letter-spacing: -0.025em;
+}
+
+h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.sub {
+  margin: 0;
+  max-width: 470px;
+  font-size: 23px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.private {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 34px;
+  padding: 10px 18px 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(60, 199, 119, 0.45);
+  background: rgba(60, 199, 119, 0.1);
+  color: #b9f0cf;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.private svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--ok);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.popup {
+  flex-shrink: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f6f8fa;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 30px 80px rgba(0, 0, 0, 0.55);
+}
+
+.popup iframe {
+  display: block;
+  border: 0;
+  width: 440px;
+  transform-origin: 0 0;
+}

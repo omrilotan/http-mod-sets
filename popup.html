@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HTTP Mod Sets</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="app-bar">
+      <div class="app-title">
+        <h1>HTTP Mod Sets</h1>
+        <div id="pageSummary" class="app-subtitle"></div>
+      </div>
+      <div class="app-actions">
+        <button id="importBtn" type="button" class="icon-btn" title="Import collection (JSON)" aria-label="Import collection"></button>
+        <button id="exportBtn" type="button" class="icon-btn" title="Export collection (JSON)" aria-label="Export collection"></button>
+        <button id="newSetBtn" type="button" class="btn primary" title="New set for this site (N)">New set</button>
+      </div>
+      <input id="importFileInput" type="file" accept="application/json,.json" hidden />
+    </header>
+
+    <div id="importBanner" class="banner" hidden></div>
+
+    <div id="searchWrap" class="search-wrap" hidden>
+      <input id="searchInput" type="search" placeholder="Filter sets…" aria-label="Filter sets" />
+    </div>
+
+    <main id="setsContainer"></main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <script src="core.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
